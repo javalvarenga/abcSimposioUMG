@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Estudiantes</title>
+  </head>
+  <body class="students-list-page">
+    <button class="students-add-button" onclick="window.location.href='/views/addStudent.html'">Agregar Estudiante</button>
+    
+    <h1 class="students-list-title">Lista de Estudiantes</h1>
+    
+    <div class="students-container">
+      <div class="students-table-responsive">
+        <table class="students-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Edad</th>
+              <th>Teléfono</th>
+              <th>Carnet</th>
+              <th>Correo Electrónico</th>
+              <th>Pago</th>
+              <th>Fecha de Registro</th>
+              <th>Fecha de Nacimiento</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="studentsTable">
+            <!-- Los datos se insertarán aquí dinámicamente -->
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    </body>
+  <script src="./js/studentsList.js"></script>
+  <link rel="stylesheet" href="./css/styles.css" />
+</html>

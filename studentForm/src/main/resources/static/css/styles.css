@@ -1,0 +1,282 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+}
+
+main {
+    padding: 0 1.3rem;
+    display: grid;
+    place-items: center;
+}
+
+main h1 {
+    margin-top: 3rem;
+    margin-bottom: 1.6rem;
+}
+
+main form {
+    width: 100%;
+    max-width: 800px;
+    padding: 6rem 1.6rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-top: 3rem;
+}
+
+
+.names-inputs__group{
+    margin:0.6rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1rem;
+}
+
+form div > div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.carnet-inputs__group{
+    margin:0.6rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 1.3rem;
+}
+
+.carnet-inputs__group input{
+    width: 100%;
+}
+
+.common-inputs__group{
+    margin:1.6rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1rem;
+}
+
+main form input {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    box-shadow: 0 0 3px rgba(57, 57, 57, 0.2);
+    
+}
+
+.actionButton{
+    padding: 0.6rem 1.6rem;
+    background-color: #03c266;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.footer-form{
+    margin-top: 0.6rem;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+.students-list-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    padding: 20px;
+    background-color: #f9f9f9;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .students-list-title {
+    text-align: center;
+    margin: 20px 0;
+    color: #3498db;
+  }
+  
+  .students-add-button {
+    margin-top: 20px;
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .students-add-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .students-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+  
+  .students-table-responsive {
+    overflow-x: auto;
+    width: 100%;
+  }
+  
+  .students-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+  }
+  
+  .students-table thead {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  .students-table th,
+  .students-table td {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  .students-table th {
+    font-weight: 600;
+  }
+  
+  .students-table tbody tr:nth-child(even) {
+    background-color: #f5f5f5;
+  }
+  
+  .students-table tbody tr {
+    transition: background-color 0.3s;
+  }
+  
+  .students-table tbody tr:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+  }
+  
+  .students-action-buttons {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .students-edit-btn,
+  .students-delete-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .students-edit-btn {
+    background-color: #f39c12;
+    color: white;
+  }
+  
+  .students-edit-btn:hover {
+    background-color: #e67e22;
+  }
+  
+  .students-delete-btn {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  .students-delete-btn:hover {
+    background-color: #c0392b;
+  }
+  
+
+  .student-actions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  /* Estilos base compartidos por ambos botones */
+  .student-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Botón de editar - estilo normal */
+  .student-edit-btn {
+    background-color: #f39c12;
+    color: white;
+  }
+  
+  /* Botón de editar - estilo hover */
+  .student-edit-btn:hover {
+    background-color: #e67e22;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Botón de eliminar - estilo normal */
+  .student-delete-btn {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  /* Botón de eliminar - estilo hover */
+  .student-delete-btn:hover {
+    background-color: #c0392b;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+
+  @media (max-width: 768px) {
+
+
+    .student-actions {
+        flex-direction: column;
+        gap: 4px;
+      }
+      
+      .student-btn {
+        padding: 4px 8px;
+        font-size: 12px;
+      }
+
+    .students-container {
+      border-radius: 0;
+      box-shadow: none;
+    }
+    
+    .students-table th,
+    .students-table td {
+      padding: 8px 10px;
+      font-size: 14px;
+    }
+    
+    .students-action-buttons {
+      flex-direction: column;
+      gap: 4px;
+    }
+    
+    .students-edit-btn,
+    .students-delete-btn {
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+  }
+

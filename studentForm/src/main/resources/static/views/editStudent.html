@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Estudiante</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+
+</head>
+<body>
+    <main>
+      <h1>Editar datos del estudiante</h1>
+
+      <!-- Agrega el id al formulario -->
+      <form id="editStudentForm"  method="post">
+        <div class="names-inputs__group">
+          <div>
+            <label for="firstName">Primer nombre:</label>
+            <input type="text" id="firstName" name="firstName" required />
+          </div>
+          <div>
+            <label for="secondName">Segundo nombre:</label>
+            <input type="text" id="secondName" name="secondName" />
+          </div>
+
+          <div>
+            <label for="firstSurname">Primer apellido:</label>
+            <input type="text" id="firstSurname" name="firstSurname" required />
+          </div>
+          <div>
+            <label for="secondSurname">Segundo apellido:</label>
+            <input
+              type="text"
+              id="secondSurname"
+              name="secondSurname"
+              required
+            />
+          </div>
+        </div>
+        <label for="secondFieldCarnet">Carnet:</label>
+        <div class="carnet-inputs__group">
+          <div>
+            <input
+              type="text"
+              id="firstFieldCarnet"
+              name="firstFieldCarnet"
+              required
+            />
+          </div>
+
+          <div>
+            <input
+              type="text"
+              id="secondFieldCarnet"
+              name="secondFieldCarnet"
+              required
+            />
+          </div>
+
+          <div>
+            <input
+              type="text"
+              id="thirdFieldCarnet"
+              name="thirdFieldCarnet"
+              required
+            />
+          </div>
+        </div>
+        <div class="common-inputs__group">
+
+          <div>
+            <label for="phone">Teléfono:</label>
+            <input type="text" id="phone" name="phone" required />
+          </div>
+
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="birthdate">Fecha de Nacimiento:</label>
+            <input type="date" id="birthdate" name="birthdate" required />
+          </div>
+        </div>
+        <div class="footer-form">
+            <button class="actionButton" type="submit">Actualizar</button>
+
+        </div>
+      </form>
+    </main>
+  </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        loadStudentData();
+        
+        document.getElementById("editStudentForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            updateStudent();
+        });
+    });
+
+    function loadStudentData() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const studentId = urlParams.get("studentId") || 1;
+
+        if (!studentId) {
+            alert("ID de estudiante no válido.");
+            return;
+        }
+
+        fetch(`/students/getStudent/${studentId}`)
+            .then(response => response.json())
+            .then(student => {
+
+                const completedName = student.studentName.split(" ");
+                const firstName = completedName[0];
+                const secondName = completedName[1];
+                const firstSurname = completedName[2];
+                const secondSurname = completedName[3];
+                const completedCarnet = student.carnet.split("-");
+                const firstFieldCarnet = completedCarnet[0];
+                const secondFieldCarnet = completedCarnet[1];
+                const thirdFieldCarnet = completedCarnet[2];
+
+
+                document.getElementById("firstName").value = firstName;
+                document.getElementById("secondName").value = secondName;
+                document.getElementById("firstSurname").value = firstSurname;
+                document.getElementById("secondSurname").value = secondSurname;
+
+                document.getElementById("firstFieldCarnet").value = firstFieldCarnet;
+                document.getElementById("secondFieldCarnet").value = secondFieldCarnet;
+                document.getElementById("thirdFieldCarnet").value = thirdFieldCarnet;
+
+                document.getElementById("phone").value = student.phone;
+                document.getElementById("email").value = student.email;
+                document.getElementById("birthdate").value = student.birthdate;
+            })
+            .catch(error => console.error("Error al cargar los datos:", error));
+    }
+
+    function updateStudent() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const studentId = urlParams.get("studentId") || 1;
+
+        const firstName = document.getElementById("firstName").value;
+        const secondName = document.getElementById("secondName").value;
+        const firstSurname = document.getElementById("firstSurname").value;
+        const secondSurname = document.getElementById("secondSurname").value;
+        const firstFieldCarnet = document.getElementById("firstFieldCarnet").value;
+        const secondFieldCarnet = document.getElementById("secondFieldCarnet").value;
+        const thirdFieldCarnet = document.getElementById("thirdFieldCarnet").value;
+
+        const completedName = [firstName, secondName, firstSurname, secondSurname].join(" ");
+        const completedCarnet = [firstFieldCarnet, secondFieldCarnet, thirdFieldCarnet].join("-");
+        
+        const studentData = {
+            studentId: studentId,
+            studentName: completedName,
+            phone: document.getElementById("phone").value,
+            carnet: completedCarnet,
+            email: document.getElementById("email").value,
+            paymentStatus: false,
+            registerDate: new Date().toISOString().split("T")[0],
+            birthdate: document.getElementById("birthdate").value
+        };
+
+        fetch(`/students/update/${studentId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(studentData)
+        })
+        .then(response => {
+            if (!response.ok) throw new Error("Error al actualizar el estudiante");
+            return response.json();
+        })
+        .then(() => {
+            alert("Estudiante actualizado correctamente.");
+            window.location.href = "/"; // Redirigir a la lista de estudiantes
+        })
+        .catch(error => console.error("Error al actualizar estudiante:", error));
+    }
+
+    function goBack() {
+        window.location.href = "/";
+    }
+</script>
+</html>

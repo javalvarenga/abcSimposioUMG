@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de estudiantes</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <main>
+      <button class="students-add-button" onclick="window.location.href='/'">Regresar a la página principal</button>
+      <h1>Registro de Estudiantes</h1>
+
+      <!-- Agrega el id al formulario -->
+      <form id="studentForm" th:action="@{/create}" method="post">
+        <div class="names-inputs__group">
+          <div>
+            <label for="firstName">Primer nombre:</label>
+            <input type="text" id="firstName" name="firstName" required />
+          </div>
+          <div>
+            <label for="secondName">Segundo nombre:</label>
+            <input type="text" id="secondName" name="secondName" />
+          </div>
+
+          <div>
+            <label for="firstSurname">Primer apellido:</label>
+            <input type="text" id="firstSurname" name="firstSurname" required />
+          </div>
+          <div>
+            <label for="secondSurname">Segundo apellido:</label>
+            <input
+              type="text"
+              id="secondSurname"
+              name="secondSurname"
+              required
+            />
+          </div>
+        </div>
+        <label for="secondFieldCarnet">Carnet:</label>
+        <div class="carnet-inputs__group">
+          <div>
+            <input
+              type="text"
+              id="firstFieldCarnet"
+              name="firstFieldCarnet"
+              required
+            />
+          </div>
+
+          <div>
+            <input
+              type="text"
+              id="secondFieldCarnet"
+              name="secondFieldCarnet"
+              required
+            />
+          </div>
+
+          <div>
+            <input
+              type="text"
+              id="thirdFieldCarnet"
+              name="thirdFieldCarnet"
+              required
+            />
+          </div>
+        </div>
+        <div class="common-inputs__group">
+
+          <div>
+            <label for="phone">Teléfono:</label>
+            <input type="text" id="phone" name="phone" required />
+          </div>
+
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="birthdate">Fecha de Nacimiento:</label>
+            <input type="date" id="birthdate" name="birthdate" required />
+          </div>
+        </div>
+        <div class="footer-form">
+            <button class="actionButton" type="submit">Registrarse</button>
+
+        </div>
+      </form>
+    </main>
+  </body>
+  <script src="../js/app.js"></script>
+</html>
